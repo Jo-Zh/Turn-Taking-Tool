@@ -1,4 +1,4 @@
-# Application for arrange players in field tool
+# Application for turn-taking play management
 
 ## Get Started
 
