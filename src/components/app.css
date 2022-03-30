@@ -1,0 +1,85 @@
+.container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.list {
+  width: 250px;
+  height: 500px;
+  border: 5px solid #26993f;
+  margin: 20px;
+  border-radius: 10px;
+  color: white;
+  background-color: #a7315e;
+}
+
+.list .title {
+  margin: 5px 10px;
+  padding: 5px;
+  font-weight: bolder;
+}
+
+.list .item {
+  margin: 5px;
+  border: 5px solid #a7315e;
+  width: fit-content;
+  border-radius: 30%;
+  background-color: #a7315e;
+  color: white;
+}
+
+.list input {
+  color: #218597;
+  margin-left: 5px;
+  width: 200px;
+}
+
+.list button {
+  padding: 2px;
+  width: fit-content;
+  margin: auto;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #7ef698;
+}
+
+.heading .title {
+  width: 200px;
+}
+
+.heading .add {
+  font-size: 30px;
+  cursor: pointer;
+}
+#request {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.btn {
+  background-color: blue;
+  font-weight: bold;
+}
+.error {
+  color: red;
+}
+
+p {
+  font-size: 0.625rem;
+  color: blue;
+}
+p:before {
+  content: "\00A9";
+}
