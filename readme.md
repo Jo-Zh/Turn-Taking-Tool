@@ -1,5 +1,7 @@
 # Application for turn-taking play management
 
+<img src="./Turn-Taking-tool.png" alt="App Screen-Shot" style="float: left; margin-right:20px" />
+
 ## Get Started
 
 1. **Install npm**

@@ -1,9 +1,10 @@
 import React from "react";
 import Timer from "./Timer";
 import "./app.css";
-import create_item from "./newItem";
-import background from "./background-field.jpg";
-import create_dragableElement from "./create_dragableElement";
+import create_item from "./functions/newItem";
+import background from "./imgs/background-field.jpg";
+import create_dragableElement from "./functions/create_dragableElement";
+import { dragOver, drop } from "./functions/dragTarget";
 
 const App = () => {
   const [order, setOrder] = React.useState(1);
@@ -42,17 +43,6 @@ const App = () => {
     }
   };
 
-  document.querySelectorAll(".drop").forEach((element) => {
-    element.addEventListener("drop", (event) => {
-      event.preventDefault();
-      const id = event.dataTransfer.getData("text");
-      event.target.appendChild(document.getElementById(id));
-    });
-    element.addEventListener("dragover", (event) => {
-      event.preventDefault();
-    });
-  });
-
   const listHandler = (e) => {
     e.preventDefault();
     const list = document.querySelectorAll(".item");
@@ -74,6 +64,8 @@ const App = () => {
           className="list drop"
           id="requested"
           style={{ backgroundImage: `url(${background})` }}
+          onDragOver={dragOver}
+          onDrop={drop}
         >
           <div className="heading">
             <div className="title">IN FIELD</div>
@@ -90,13 +82,18 @@ const App = () => {
           </button>
         </div>
 
-        <div className="list drop" id="done">
+        <div
+          className="list drop"
+          id="done"
+          onDragOver={dragOver}
+          onDrop={drop}
+        >
           <div className="heading">
             <div className="title">BACKUP</div>
           </div>
         </div>
       </div>
-      <p> 2022 Design and coded by Joanna Zhong </p>
+      <p> 2022 Designed and coded by Joanna Zhong </p>
     </div>
   );
 };

@@ -1,19 +1,12 @@
 import React from "react";
 import "./timer.css";
+import timeFormat from "./functions/timeFormat";
 
-// import logo from "./cakelogo.png";
-
-const timeFormat = (i) => {
-  let min = Math.floor(i / 60);
-  let sec = i % 60;
-  return (min >= 10 ? min : "0" + min) + ":" + (sec >= 10 ? sec : "0" + sec);
-};
 //-----------------parent component------------------//
 const Timer = () => {
   const [sessionIntervalTime, setSessionIntervalTime] = React.useState(5 * 60);
-  //set SessionControl
   const [playOn, setPlayOn] = React.useState(false);
-  //set repeat
+
   const alert = React.useRef();
   const beepPlayer = () => {
     alert.current.play();
@@ -23,8 +16,8 @@ const Timer = () => {
     alert.current.currentTime = 0;
   };
   //displaying timer and set interval time-----//
-  //displaying timer and set interval time-----//
-  const setIntervalTimeHandler = (value, id) => {
+
+  const setIntervalTimeHandler = (value) => {
     if (sessionIntervalTime <= 60 && value < 0) {
       return;
     }
@@ -34,7 +27,7 @@ const Timer = () => {
     setSessionIntervalTime((prev) => prev + value);
   };
   //--------------------run timer-------------------------//
-  //--------------------run timer-------------------------//
+
   const sessionOn = () => {
     let second = 1000;
     let date = new Date().getTime();
@@ -54,7 +47,7 @@ const Timer = () => {
 
           nextDate += second;
         }
-      }, 10);
+      }, 30);
       localStorage.removeItem("interval-id");
       localStorage.setItem("interval-id", interval);
     }
@@ -63,7 +56,7 @@ const Timer = () => {
     }
     setPlayOn(!playOn);
   };
-  //-----------------reset Timer------------//
+
   //-----------------reset Timer------------//
   const resetHandle = () => {
     beepReset();
@@ -77,9 +70,6 @@ const Timer = () => {
       <div className="control-panel">
         <label id="session-label">Waiting Timer</label>
         <SessionInterval
-          lengthID="session-length"
-          addID="session-increment"
-          subID="session-decrement"
           IntervalTimeHandler={setIntervalTimeHandler}
           intervalTime={sessionIntervalTime}
         />
@@ -112,13 +102,13 @@ const SessionInterval = (props) => {
   };
   return (
     <div className="set-panel">
-      <button id={props.addID} type="button" onClick={IntervaladdHandler}>
+      <button type="button" onClick={IntervaladdHandler}>
         +
       </button>
-      <div id={props.lengthID} className="intervaltime-display">
+      <div className="intervaltime-display">
         {timeFormat(props.intervalTime)}
       </div>
-      <button id={props.subID} type="button" onClick={IntervalsubHandler}>
+      <button type="button" onClick={IntervalsubHandler}>
         -
       </button>
     </div>
