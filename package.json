@@ -3,7 +3,12 @@
   "description": "create a soccer team, and manage players taking turns to play",
   "scripts": {
     "start": "run-p start-dev",
-    "start-dev": "webpack serve --config webpack.config.dev.js --port 3000"
+    "start-dev": "webpack serve --config webpack.config.dev.js --port 3000",
+    "clean:build": "rimraf ./build && mkdir build",
+    "prebuild": "run-p clean:build",
+    "build": "webpack --config webpack.config.prod.js",
+    "postbuild": "run-p serve:build",
+    "serve:build": "http-server ./build"
   },
   "dependencies": {
     "bootstrap": "5.0.2",
