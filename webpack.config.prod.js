@@ -19,7 +19,7 @@ module.exports = {
   },
 
   plugins: [
-    // new webpackBundleAnalyzer.BundleAnalyzerPlugin({ analyzerMode: "static" }),
+    new webpackBundleAnalyzer.BundleAnalyzerPlugin({ analyzerMode: "static" }),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
